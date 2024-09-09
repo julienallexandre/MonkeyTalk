@@ -1,0 +1,13 @@
+services:
+    db:
+        image: mysql:8
+        container_name: monkeytalk-db
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: yes
+            MYSQL_DATABASE: ${DB_DATABASE:-monkeytalk}
+            MYSQL_USER: ${DB_USERNAME:-monkeyuser}
+            MYSQL_PASSWORD: ${DB_PASSWORD:-monkeypassword}
+        volumes:
+            -   ./docker/mysql/data:/var/lib/mysql
+        ports:
+            - "3306:3306"
